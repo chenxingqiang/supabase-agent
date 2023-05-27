@@ -6,16 +6,14 @@ import Link from 'next/link'
 export interface SectionContent {
   section: CategoryAttribute
   includedInPlan?: boolean
-  lastKnownValue?: string
 }
 
 const SectionContent = ({
   section,
   includedInPlan,
-  lastKnownValue,
   children,
 }: PropsWithChildren<SectionContent>) => {
-  const { name, description, docsUrl } = section
+  const { name, description, links } = section
 
   return (
     <div className="border-b">
@@ -34,21 +32,22 @@ const SectionContent = ({
                   </p>
                 ))}
               </div>
-              {docsUrl !== undefined && (
-                <div>
+              {links && links.length && (
+                <div className="space-y-2">
                   <p className="text-sm text-scale-1100 mb-2">More information</p>
-                  <Link href={docsUrl}>
-                    <a target="_blank" rel="noreferrer">
-                      <div className="flex items-center space-x-2 opacity-50 hover:opacity-100 transition">
-                        <p className="text-sm">Documentation</p>
-                        <IconExternalLink size={16} strokeWidth={1.5} />
-                      </div>
-                    </a>
-                  </Link>
+                  {links.map((link) => (
+                    <div key={link.url}>
+                      <Link href={link.url}>
+                        <a target="_blank" rel="noreferrer">
+                          <div className="flex items-center space-x-2 opacity-50 hover:opacity-100 transition">
+                            <p className="text-sm">{link.name}</p>
+                            <IconExternalLink size={16} strokeWidth={1.5} />
+                          </div>
+                        </a>
+                      </Link>
+                    </div>
+                  ))}
                 </div>
-              )}
-              {lastKnownValue !== undefined && (
-                <p className="text-xs text-scale-1000">Last updated at: {lastKnownValue}</p>
               )}
             </div>
           </div>
