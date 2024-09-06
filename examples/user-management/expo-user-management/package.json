@@ -10,11 +10,11 @@
     "format": "prettier --write \"**/*.{js,json,md,ts,tsx,jsx,css}\""
   },
   "dependencies": {
-    "@expo/webpack-config": "^18.0.3",
+    "@expo/webpack-config": "^18.1.0",
     "@react-native-async-storage/async-storage": "^1.17.9",
-    "@supabase/supabase-js": "^2.0.4",
-    "expo": "~46.0.21",
-    "expo-splash-screen": "~0.16.2",
+    "@supabase/supabase-js": "^2.39.3",
+    "expo": "~51.0.0",
+    "expo-splash-screen": "~0.18.0",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
